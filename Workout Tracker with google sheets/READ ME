@@ -1,0 +1,8 @@
+This program utilizes Nutritionix's natural language to send a user's input to google sheets & attach the relevant data.
+data is added to this sheet: https://docs.google.com/spreadsheets/d/17W6tjuF9UitSdYy1qfrY-JDdr2OIhM5pgYbHtKtVVIA/edit?usp=sharing
+
+ex:
+Input: I ran 3 miles
+Output:
+Date	     Current Time 	 Exercise	  Duration	Calories
+02/02/2023	20:06:23	     Running	     30	       343
