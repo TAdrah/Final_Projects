@@ -1,0 +1,2 @@
+This program will auto save or auto apply to any job using linkedin's easy apply button given a URL with pre-loaded filters. 
+If the application requires additional details the bot will not apply.
