@@ -1,0 +1,9 @@
+This program finds the cheapest flight from the origin city (London) to cities in the google sheets file then sends SMS + Email to the users.
+
+HOW TO USE (You will need access from admin to update google sheets.):
+
+1. Go to the google sheets file: https://docs.google.com/spreadsheets/d/1J4PFRmPu6QXlszjPHvjVs3piMYb1SG0dI45m_vfYmM8/edit?usp=sharing.
+2. Update column A with the City code with the destination you want to travel to.
+3. Do not update column B, the program can do that for you.
+4. Update column C with the your maximum price you will pay for a ticket (the program will find a cheaper price).
+5. Run the program
