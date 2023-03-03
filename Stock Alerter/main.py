@@ -17,7 +17,6 @@ TWILIO_VIRTUAL_NUMBER = os.environ.get("v_number")
 MY_NUMBER = os.environ.get("my_number")
 
 
-# When stock price increase/decreases by 5% between yesterday and the day before yesterday then print("Get News").
 today = datetime.datetime.today()
 temp_yesterday = today - datetime.timedelta(days=1)
 yesterday = str(temp_yesterday)[0:10] + " 13:00:00"
@@ -39,11 +38,10 @@ temp_before_yesterdays_closing_price = [data["Time Series (30min)"][before_yeste
 before_yesterday_closing_price = float(temp_before_yesterdays_closing_price[0:9][0])
 print(before_yesterday_closing_price)
 
-# get absolute difference between yesterday & before yesterday prices
+# get absolute difference & % between yesterday & before yesterday prices
 delta = abs(yesterday_closing_price - before_yesterday_closing_price)
 print(round(delta, 3))
 
-# get percentage
 percent = (delta / (yesterday_closing_price + before_yesterday_closing_price / 2)) * 100
 print(percent)
 
