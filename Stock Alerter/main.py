@@ -16,7 +16,7 @@ NEWS_KEY = os.environ.get("news_key")
 TWILIO_VIRTUAL_NUMBER = os.environ.get("v_number")
 MY_NUMBER = os.environ.get("my_number")
 
-## STEP 1: Use https://www.alphavantage.co/documentation/#daily
+
 # When stock price increase/decreases by 5% between yesterday and the day before yesterday then print("Get News").
 today = datetime.datetime.today()
 temp_yesterday = today - datetime.timedelta(days=1)
