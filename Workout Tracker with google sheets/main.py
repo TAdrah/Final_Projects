@@ -53,5 +53,3 @@ write_response = requests.post(
     json=sheet_inputs,
     headers=bearer_headers,
 )
-
-#type this when running the program: i ran 3 miles
