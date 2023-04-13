@@ -1,4 +1,4 @@
-# Final_Projects
+# Projects
 
 Porfolio of projects to showcase experience
 
