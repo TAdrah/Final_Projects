@@ -20,7 +20,12 @@ class RedFin_Scraper:
         self.soup = BeautifulSoup(self.response.text, "lxml")
         self.data = self.soup.select('.HomeViews > div > div > div')
 
-    def get_links(self):
+    def get_links(self) -> list:
+        """
+        parses data & returns the url per item
+        :return: list
+        """
+        
         links = []
         for i in self.data:
             try:
@@ -29,7 +34,11 @@ class RedFin_Scraper:
                 continue
         return links
 
-    def get_list_price(self):
+    def get_list_price(self) -> list:
+        """
+        parses data & returns list price per item
+        :return: list
+        """
         prices = []
         for i in self.data:
             try:
@@ -38,7 +47,11 @@ class RedFin_Scraper:
                 continue
         return prices
 
-    def get_address(self):
+    def get_address(self) -> list:
+        """
+        parses data & returns address per item
+        :return: list
+        """
         addresses = []
         for i in self.data:
             try:
@@ -47,7 +60,11 @@ class RedFin_Scraper:
                 continue
         return addresses
 
-    def prices(self):
+    def prices(self) -> list:
+        """
+        parses data & returns prices per item
+        :return: list
+        """
         prices = []
         for i in self.data:
             try:
@@ -56,7 +73,11 @@ class RedFin_Scraper:
                 continue
         return prices
 
-    def bed_bath_sqft(self):
+   def bed_bath_sqft(self) -> list:
+        """
+        parses data & returns bed, bath, square foott per item
+        :return: list
+        """
         bbs = []
         for i in self.data:
             try:
