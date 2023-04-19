@@ -7,3 +7,4 @@ TO DO:
 - update GUI to needed fields only
   - remove max-baths, max-beds, property-type dropdown
 - sqft needs to be updated in gui to allow certain options OR in set_filters class to accept a range & convert to one of the accepted inputs in redfin
+- create notification manager for email/sms notifs
