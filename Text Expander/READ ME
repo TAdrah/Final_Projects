@@ -6,3 +6,13 @@ abv: zemail
 text: example@hotmail.com
 
 then the next time I type zemail, the system will change the word zemail to example@hotmail.com
+
+
+Adding a snippet:
+- Enter your abbreviation in the abbreviation field
+- Enter the text you want the abbreviation to expand to in the text field
+- Click "Add snippet" button
+
+Deleting a snippet:
+- Enter the abbreviaion in the abbreviation field
+- Click the Delete snippet button (no need to enter the text)
