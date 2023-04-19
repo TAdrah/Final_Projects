@@ -7,7 +7,24 @@ from set_filters import Filters
 
 url = ''
 
-def start():
+def start(url):
+    """
+    Given a url, this function will go there & scrape the date, cost & link then post to google sheets
+    :param: url as string
+    :return:
+    """
+    scraper = RedFin_Scraper(url)
+
+    prices = scraper.get_list_price()
+    links = scraper.get_links()
+    addresses = scraper.get_address()
+
+    #fill google form
+    filler = Form_Filler()
+    filler.answer_questions(addresses, prices, links)
+
+
+def create_url():
     """
     - Gets values from inputs
     - get correct redfin url
@@ -31,7 +48,7 @@ def start():
         inputs[drop_down_menus[i][0]] = list_of_combos[i].get()
 
     selected_text_list = [property_type_listbox.get(i) for i in property_type_listbox.curselection()]
-
+    print(selected_text_list)
     # starts on 2nd value in list to avoid adding a + in an empty var
 
     try:
@@ -47,16 +64,6 @@ def start():
     filters = Filters()
     global url
     url = filters.get_url(new_inputs)
-
-
-    scraper = RedFin_Scraper(url)
-    prices = scraper.get_list_price()
-    links = scraper.get_links()
-    addresses = scraper.get_address()
-
-    #fill google form
-    filler = Form_Filler()
-    filler.answer_questions(addresses, prices, links)
 
 
 root = tk.Tk()
@@ -101,8 +108,8 @@ property_type_var = tk.StringVar(value=drop_down_menus[5][1])
 property_type_listbox = tk.Listbox(root, listvariable=property_type_var, selectmode=tk.MULTIPLE)
 property_type_listbox.grid(row=7, column=3)
 
-search_box = tk.Button(root, text="Search", command=start)
+search_box = tk.Button(root, text="Search", command=create_url)
 search_box.grid(row=10, pady=10)
 
-start()
+start(url)
 root.mainloop()
