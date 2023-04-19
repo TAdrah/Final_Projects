@@ -64,7 +64,7 @@ def create_url():
     filters = Filters()
     global url
     url = filters.get_url(new_inputs)
-
+    start(url)
 
 root = tk.Tk()
 root.title("Real Estate Filter")
@@ -111,5 +111,4 @@ property_type_listbox.grid(row=7, column=3)
 search_box = tk.Button(root, text="Search", command=create_url)
 search_box.grid(row=10, pady=10)
 
-start(url)
 root.mainloop()
