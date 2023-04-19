@@ -1,0 +1,21 @@
+Records mouse & keyboard inputs to repeat any number of times
+Recording will be saved in a txt file & will auto load when the program launches again next time.
+
+
+NOTE: Only allows for 1 recorded file at a time, creating a new recording will overwrite the first one.
+
+
+
+To record:
+- Click record and do anything needed. 
+- Click the esc key to stop recording
+
+To play:
+- Enter out how many times you want your macro to repeat (default is 1)
+- Click play
+
+
+TO DO:
+- Update UI to look cleaner
+- Allow user to create/load multiple files.
+- test/ensure hotkeys work ex: (ctrl+c, ctrl+v)
