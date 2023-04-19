@@ -11,7 +11,13 @@ class Form_Filler:
         self.driver = webdriver.Chrome(service=self.chrome_driver_path)
         self.driver.get("https://forms.gle/kwWzTm4FyLTVpfg7A")
 
-    def answer_questions(self, address:list, price:list, link:list):
+    def answer_questions(self, address: list, price: list, link: list):
+        """
+        Given address, price, & link, fill out the google form
+        :param address:
+        :param price:
+        :param link: 
+        """
         WebDriverWait(self.driver, 20).until(
             EC.element_to_be_clickable((By.XPATH,'//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div')))
         for i in range(len(address)):
