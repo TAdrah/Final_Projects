@@ -1,0 +1,9 @@
+This program takes user input, inputs them as filters in redfin to generate a URL. Then scrapes the page to collect specific data to fill 
+out the google form https://forms.gle/kwWzTm4FyLTVpfg7A which will auto add them to the google sheets: https://docs.google.com/spreadsheets/d/1S6nZ93k56MuT2rLaIXSyTrIPzXlA0AoufB3gbr-7Wmw/edit?usp=sharing
+
+
+
+TO DO:
+- update GUI to needed fields only
+  - remove max-baths, max-beds, property-type dropdown
+- sqft needs to be updated in gui to allow certain options OR in set_filters class to accept a range & convert to one of the accepted inputs in redfin
