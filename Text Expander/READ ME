@@ -1,0 +1,8 @@
+Create abbreviations & expansions to help streamline repatitive tasks & reduce the need for copy/paste
+
+example: if i enter the following into the program:
+
+abv: zemail
+text: example@hotmail.com
+
+then the next time I type zemail, the system will change the word zemail to example@hotmail.com
