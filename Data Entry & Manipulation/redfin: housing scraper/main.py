@@ -3,7 +3,6 @@ from form_filler import Form_Filler
 import tkinter as tk
 from tkinter import messagebox
 from tkinter import ttk
-import pprint
 from set_filters import Filters
 
 url = ''
