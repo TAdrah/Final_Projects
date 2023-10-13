@@ -1,0 +1,76 @@
+import requests
+import pandas as pd
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
+import smtplib
+import os
+
+password = os.environ.get('PASSWORD')
+myEmail = os.environ.get('MY_EMAIL')
+toEmail = os.environ.get('TO_EMAIL')
+
+
+datax = requests.get(
+    "https://api.sheety.co/19818e47bc46513f234ed7a2d3c8243b/distanceTravelledByDay/sheet1").json()['sheet1']
+data = pd.DataFrame(datax)
+first_50 = data.head(20)
+
+total_miles_by_date = {}
+sorted_total_miles_by_date = {}
+for index, row in first_50.iterrows():
+    date = row['date']
+    robot_id = row['robotId']
+    total_miles = row['totalMiles']
+
+    # Initialize dates
+    if date not in total_miles_by_date:
+        total_miles_by_date[date] = {}
+
+    # Initialize robot ids
+    if robot_id not in total_miles_by_date[date]:
+        total_miles_by_date[date][robot_id] = 0
+
+    # Add miles to robot ids based on date
+    total_miles_by_date[date][robot_id] += total_miles
+
+sorted_total_miles_by_date = {date: total_miles_by_date[date] for date in sorted(total_miles_by_date)}
+biggest_mileage = 0
+biggest_date = 0
+biggest_robot = 0
+
+table = "Date       | RobotID | Total Miles\n"
+table += "----------------------------------\n"
+for date, values in sorted_total_miles_by_date.items():
+    robot_id = list(values.keys())[0]
+    total_miles = values[robot_id]
+    table += f"{date} | {robot_id} | {total_miles:.2f}\n"
+    if total_miles > biggest_mileage:
+        biggest_mileage = total_miles
+        biggest_date = date
+        biggest_robot = robot_id
+
+msg = MIMEMultipart()
+msg['Subject'] = 'Yo! This is a test!'
+msg['From'] = myEmail
+msg['To'] = 'tony.adrah@doordash.com'
+body = f"\n\n\n\nSubject:Yo! This is a test!\n\n"\
+       f"This is the a test of the table \n{table}\n\n\n"\
+       f"The highest total mileage is {biggest_mileage} "\
+       f"It occured on {biggest_date} "\
+       f"The robot ID is {biggest_robot}"
+
+image = open('honest work.jpg', 'rb').read()
+image_attachment = MIMEImage(image, name='photo.jpg')
+msg.attach(image_attachment)
+msg.attach(MIMEText(body, 'plain'))
+
+
+with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
+    connection.starttls()
+    connection.login(user=myEmail, password=password)
+    connection.sendmail(
+        from_addr=myEmail,
+        to_addrs=toEmail,
+        msg=msg.as_string()
+    )
